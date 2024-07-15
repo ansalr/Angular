@@ -1,0 +1,15 @@
+<div>
+    <input [(ngModel)]="filterText" (input)="applyFilterAndSort()" placeholder="Filter items">
+    <select [(ngModel)]="sortDirection" (change)="applyFilterAndSort()">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+    <div *ngFor="let item of filteredItems">
+      <app-child 
+        [item]="item" 
+        (itemSelected)="onItemSelected($event)" 
+        (itemDeleted)="onItemDeleted($event)">
+      </app-child>
+    </div>
+  </div>
+  
